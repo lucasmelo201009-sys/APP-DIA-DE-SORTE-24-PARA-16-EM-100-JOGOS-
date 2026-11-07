@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DIA DE SORTE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050400;--pn:#0d0b00;--tx:#fff8d6;--mut:#a89c55;--y:#ffe600;--a:#ffb300;--w:#fff;--ln:#4d4200;--rd:#ff4d4d}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(900px 420px at 50% -8%,#ffe60026,transparent),var(--bg);color:var(--tx);font:600 16px/1.4 Rajdhani,"Segoe UI",system-ui,sans-serif}
+.w{max-width:1100px;margin:0 auto;padding:0 12px 60px}
+h1,h2,button{font-family:Orbitron,"Arial Black",sans-serif}
+header{padding:26px 12px 10px;text-align:center}
+h1{margin:0;font-weight:900;font-size:clamp(34px,11vw,72px);letter-spacing:2px;color:#fff;text-shadow:0 0 6px var(--y),0 0 20px var(--y),0 0 46px var(--a)}
+header p{margin:8px 0 0;color:var(--y);text-shadow:0 0 10px #ffe60099;font-weight:700;font-size:18px}
+.preco{margin:14px auto 0;max-width:420px;padding:10px 14px;border-radius:12px;background:var(--y);color:#141000;font:900 15px Orbitron,sans-serif;letter-spacing:1px;box-shadow:0 0 20px var(--y),0 0 44px #ffe60088;animation:piscar 1.4s ease-in-out infinite}.preco b{font-size:1.25em}
+.contato{margin:12px auto 0;max-width:420px;padding:9px 14px;border:1.5px solid var(--y);border-radius:30px;color:var(--y);font:700 15px Rajdhani,sans-serif;text-shadow:0 0 8px var(--y);box-shadow:0 0 14px #ffe60055}
+nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:14px 0 18px}
+nav button{font:700 14px Orbitron,sans-serif;padding:10px 16px;border-radius:10px;border:1.5px solid var(--y);background:transparent;color:var(--y);cursor:pointer;text-shadow:0 0 8px var(--y);box-shadow:0 0 10px #ffe60044}
+nav button[aria-selected=true]{background:var(--y);color:#141000;text-shadow:none;box-shadow:0 0 18px var(--y)}
+button:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid #fff;outline-offset:2px}
+section[hidden]{display:none}
+.p{--k:var(--y);background:var(--pn);border:1.5px solid var(--k);border-radius:14px;margin-bottom:16px;box-shadow:0 0 16px -3px var(--k),inset 0 0 22px -12px var(--k);overflow:hidden}
+.p.a{--k:var(--a)}
+.p h2{margin:0;padding:11px 14px;font-size:14px;font-weight:700;color:var(--k);text-shadow:0 0 9px var(--k);border-bottom:1px solid var(--k)}
+.b{padding:14px}
+.cl{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px}
+.cl>.p{margin:0}
+.d{margin:0 0 10px;color:var(--mut)}
+.gd{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-width:380px}
+.gd button{aspect-ratio:1;background:#120f00;border:1.5px solid var(--ln);color:#d8cc86;border-radius:10px;font:700 clamp(14px,4vw,19px) Orbitron,sans-serif;cursor:pointer;padding:0}
+.gd button:active{transform:scale(.93)}
+.gd button.on{background:linear-gradient(145deg,#fff27a,var(--y));color:#2a2200;border-color:#fff;box-shadow:0 0 14px var(--y),0 0 30px #ffe60077}
+.gd button.ex{opacity:.25;text-decoration:line-through}
+.gd button.sel{background:var(--a);color:#1a1000;border-color:#fff;box-shadow:0 0 14px var(--a)}
+.bt{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+button.ac{font:700 13px Orbitron,sans-serif;padding:9px 13px;border-radius:9px;border:1.5px solid var(--y);background:transparent;color:var(--y);cursor:pointer;text-shadow:0 0 8px var(--y);box-shadow:0 0 10px #ffe60044}
+button.ac.s{border-color:var(--ln);color:#d8cc86;text-shadow:none;box-shadow:none}
+button.ac:hover{background:#ffe60022}
+.av{margin-top:12px;padding:8px 10px;border-radius:8px;border:1px solid var(--y);color:var(--y);font-size:15px}
+.av.er{border-color:var(--rd);color:var(--rd)}
+.tubo{--k:var(--y);text-align:center;padding:14px 2px 12px;border:2px solid var(--ln);border-radius:16px;color:#5c5018;background:#0a0800;max-width:260px;margin:0 auto}
+.tubo b{display:block;font:900 clamp(26px,7vw,40px) Orbitron,sans-serif}
+.tubo span{display:block;font-size:14px}
+.tubo em{display:block;font:900 clamp(30px,8vw,48px) Orbitron,sans-serif;font-style:normal;margin-top:4px}
+.tubo.on{border-color:var(--k);color:var(--k);text-shadow:0 0 10px var(--k),0 0 24px var(--k);animation:piscar .9s ease-in-out infinite}
+.res{margin:14px 0 0;font-size:18px;color:var(--y);text-shadow:0 0 8px #ffe60088;text-align:center}
+.dc{margin:10px 0 0;color:var(--mut);font-size:14.5px}
+.lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px}
+.g{background:#0a0800;border:1.5px solid var(--ln);border-radius:12px;padding:10px 12px}
+.gh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px}
+.gi{font:700 13px Orbitron,sans-serif;color:var(--y);text-shadow:0 0 8px var(--y)}
+.pt{font:700 12px Orbitron,sans-serif;color:var(--mut)}
+.gn{display:flex;flex-wrap:wrap;gap:5px}
+.n{display:inline-flex;align-items:center;justify-content:center;width:31px;height:31px;border-radius:50%;background:#1a1500;border:1px solid var(--ln);color:#e8dd9c;font:700 12px Orbitron,sans-serif}
+.n.h{background:var(--y);color:#201a00;border-color:#fff;box-shadow:0 0 8px var(--y)}
+.n.m{opacity:.3}
+.g.win{border-color:var(--y);background:#2a2300;animation:neon .9s ease-in-out infinite}
+.pz{font:900 12px Orbitron,sans-serif;padding:4px 9px;border-radius:7px;background:var(--y);color:#141000;box-shadow:0 0 14px var(--y);animation:piscar .9s ease-in-out infinite}
+@keyframes neon{0%,100%{box-shadow:0 0 6px var(--y),0 0 16px #ffe60088,inset 0 0 10px -4px var(--y)}50%{box-shadow:0 0 26px var(--y),0 0 60px var(--y),inset 0 0 24px -2px var(--y);border-color:#fff}}
+@keyframes piscar{0%,100%{opacity:1;text-shadow:0 0 10px var(--y),0 0 26px var(--y)}50%{opacity:.35;text-shadow:none}}
+@media(prefers-reduced-motion:reduce){.g.win,.pz,.tubo.on,.preco{animation:none}.g.win{box-shadow:0 0 22px var(--y)}}
+textarea{width:100%;min-height:110px;padding:9px;border-radius:9px;border:1.5px solid var(--ln);background:#0a0800;color:var(--tx);font:600 15px Rajdhani,monospace;resize:vertical}
+.gf{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.gf label{display:block;font-size:14px;color:var(--mut);margin-bottom:3px}
+.gf input{width:100%;padding:8px;border-radius:8px;border:1.5px solid var(--ln);background:#0a0800;color:var(--tx);font:700 16px Orbitron,sans-serif}
+.cs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:14px 0}
+.ct{--k:var(--y);border:1.5px solid var(--k);border-radius:12px;padding:10px 12px;box-shadow:0 0 14px -4px var(--k)}
+.ct.g2{--k:var(--a)}.ct.ng{--k:var(--rd)}
+.ct span{display:block;font-size:14px;color:var(--mut)}
+.ct strong{display:block;font:900 clamp(18px,4.6vw,24px) Orbitron,sans-serif;color:var(--k);text-shadow:0 0 10px var(--k);margin-top:2px}
+table.s{border-collapse:collapse;width:100%}
+.s th,.s td{padding:7px 8px;text-align:left;border-bottom:1px solid var(--ln);font-size:15px}
+.s th{color:var(--y);font:700 12px Orbitron,sans-serif}
+.s td.n2{text-align:right;font-variant-numeric:tabular-nums}
+.rl{overflow-x:auto}
+footer{text-align:center;color:var(--mut);font-size:14px;padding:20px 12px 4px}
+footer b{color:var(--y);text-shadow:0 0 8px var(--y)}
+</style>
+</head>
+<body>
+<header>
+  <h1>DIA DE SORTE</h1>
+  <p>24 para 16 em 100 jogos &middot; exclua 7 das 31 dezenas e receba 100 jogos de 16</p>
+  <div class="preco">APLICATIVO &middot; VALOR ÚNICO <b>R$ 25,00</b></div>
+  <div class="contato">📞 Marcos Loteria &middot; (33) 9.9943-2301</div>
+</header>
+<div class="w">
+<nav id="ab">
+  <button data-t="p1" aria-selected="true">Jogos e conferidor</button>
+  <button data-t="p2" aria-selected="false">Copia e cola</button>
+  <button data-t="p3" aria-selected="false">Investimento e ganhos</button>
+</nav>
+
+<section id="p1">
+  <div class="cl">
+    <div class="p"><h2>1) Exclua 7 dezenas das 31</h2><div class="b">
+      <p class="d" id="ex-ctr"></p>
+      <div class="gd" id="ce"></div>
+      <div class="bt"><button class="ac" id="se">Sortear exclusão</button><button class="ac s" id="le">Reiniciar</button></div>
+      <div class="av" id="av"></div>
+    </div></div>
+    <div class="p a"><h2>2) Resultado: marque as 7 dezenas</h2><div class="b">
+      <p class="d" id="ctr"></p>
+      <div class="gd" id="cr"></div>
+      <div class="bt"><button class="ac s" id="lr">Limpar resultado</button><button class="ac" id="sr">Sortear resultado</button></div>
+    </div></div>
+  </div>
+
+  <div class="p" style="margin-top:16px"><h2>Conferidor</h2><div class="b">
+    <div class="tubo" id="tb7"><b>7</b><span>pontos</span><em id="q7">00</em></div>
+    <p class="res" id="rs"></p>
+  </div></div>
+
+  <div class="p"><h2 id="tit">Jogos de 16 dezenas</h2><div class="b">
+    <p class="dc" id="st" style="margin:0 0 12px"></p>
+    <div class="lista" id="lj"></div>
+    <p class="dc">Os 100 jogos são distribuídos de forma uniforme entre todas as combinações possíveis de 16 dezenas dentro das 24 escolhidas. Cada jogo que acertar as 7 dezenas sorteadas pisca em neon.</p>
+  </div></div>
+</section>
+
+<section id="p2" hidden>
+  <div class="p"><h2>Colar os jogos</h2><div class="b">
+    <textarea id="tj" placeholder="Cole seus jogos, um por linha, com 16 dezenas de 01 a 31 em qualquer formato:&#10;Jogo 01: 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16"></textarea>
+    <div class="bt"><button class="ac" id="aj">Aplicar jogos</button><button class="ac s" id="vg">Voltar aos jogos gerados</button></div>
+    <div class="av" id="avj" hidden></div>
+  </div></div>
+  <div class="p a"><h2>Colar o resultado</h2><div class="b">
+    <textarea id="tr" style="min-height:80px" placeholder="Cole as 7 dezenas sorteadas em qualquer formato: 03 08 12 19 22 27 30"></textarea>
+    <div class="bt"><button class="ac" id="ar">Aplicar resultado</button></div>
+    <div class="av" id="avr" hidden></div>
+  </div></div>
+  <div class="p"><h2>Copiar os jogos</h2><div class="b">
+    <textarea id="tx" readonly style="min-height:220px"></textarea>
+    <div class="bt"><button class="ac" id="c1">Copiar jogos</button><button class="ac s" id="c2">Copiar com vírgula</button></div>
+    <p class="dc" id="acmsg"></p>
+  </div></div>
+</section>
+
+<section id="p3" hidden>
+  <div class="p"><h2>Valores</h2><div class="b">
+    <div class="gf">
+      <div><label for="va">Valor de cada jogo (R$)</label><input id="va" type="number" min="0" step="0.01" value="3"></div>
+      <div><label for="pr7">Prêmio 7 pontos (R$)</label><input id="pr7" type="number" min="0" step="0.01" value="160"></div>
+    </div>
+    <div class="cs">
+      <div class="ct"><span>Investimento (todos os jogos)</span><strong id="ci">R$ 0,00</strong></div>
+      <div class="ct g2"><span>Ganhos do concurso</span><strong id="cg">R$ 0,00</strong></div>
+      <div class="ct" id="cl"><span>Lucro</span><strong id="cl2">R$ 0,00</strong></div>
+    </div>
+    <table class="s"><thead><tr><th>Faixa</th><th>Jogos</th><th>Prêmio</th><th>Total</th></tr></thead><tbody id="tp"></tbody></table>
+  </div></div>
+  <div class="p a"><h2>Acumulado dos concursos</h2><div class="b">
+    <div class="bt" style="margin:0 0 12px"><button class="ac" id="rg">Registrar este concurso</button><button class="ac s" id="ru">Apagar o último</button><button class="ac s" id="rl">Limpar histórico</button></div>
+    <div class="cs">
+      <div class="ct"><span>Total investido</span><strong id="ti">R$ 0,00</strong></div>
+      <div class="ct g2"><span>Total de ganhos</span><strong id="tg">R$ 0,00</strong></div>
+      <div class="ct" id="ts"><span>Saldo</span><strong id="ts2">R$ 0,00</strong></div>
+    </div>
+    <div class="rl"><table class="s"><thead><tr><th>#</th><th>Jogos com 7</th><th>Investido</th><th>Ganhos</th><th>Saldo</th></tr></thead><tbody id="th"></tbody></table></div>
+    <p class="dc" id="ah">Monte os jogos, marque o resultado e registre o concurso para somar aqui.</p>
+  </div></div>
+</section>
+</div>
+<footer>Aplicativo <b>DIA DE SORTE</b> &middot; Valor único R$ 25,00 &middot; Contato: Marcos Loteria &middot; (33) 9.9943-2301</footer>
+
+<script>
+(function(){
+"use strict";
+const $=i=>document.getElementById(i),T=31,EX=7,GS=16,NG=100,SZ=7,K="diadesorte-24-16-100";
+let exc=[],marc=[],custom=null,hist=[],gen=[],genKey="";
+const pad=n=>String(n).padStart(2,"0");
+const R$=v=>"R$ "+(+v||0).toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
+const num=i=>{const v=parseFloat($(i).value);return isFinite(v)?v:0};
+const asc=(a,b)=>a-b;
+const emb=()=>{const a=[];for(let n=1;n<=T;n++)a.push(n);for(let i=a.length-1;i>0;i--){const k=Math.random()*(i+1)|0;[a[i],a[k]]=[a[k],a[i]]}return a};
+
+/* geração dos 100 jogos */
+function nCr(n,r){if(r<0||r>n)return 0;r=Math.min(r,n-r);let x=1;for(let i=0;i<r;i++)x=x*(n-i)/(i+1);return Math.round(x)}
+function kth(n,r,m){const out=[];let a=n,b=r,x=nCr(n,r)-1-m;for(let i=0;i<r;i++){a--;while(nCr(a,b)>x)a--;out.push(n-1-a);x-=nCr(a,b);b--}return out}
+function gerar(){
+  if(exc.length!==EX)return [];
+  const key=exc.slice().sort(asc).join();
+  if(key===genKey)return gen;
+  const pool=[];for(let n=1;n<=T;n++)if(!exc.includes(n))pool.push(n);
+  const total=nCr(pool.length,pool.length-GS),g=[];
+  for(let i=0;i<NG;i++){
+    const out=new Set(kth(pool.length,pool.length-GS,Math.floor(i*total/NG)));
+    g.push(pool.filter((_,j)=>!out.has(j)));
+  }
+  gen=g;genKey=key;return g;
+}
+const pts=(j,r)=>j.filter(n=>r.includes(n)).length;
+
+/* grades */
+for(let n=1;n<=T;n++){
+  [["ce",()=>clicaE(n)],["cr",()=>clicaR(n)]].forEach(([p,fn])=>{
+    const b=document.createElement("button");b.id=p+n;b.textContent=pad(n);b.addEventListener("click",fn);$(p).appendChild(b);
+  });
+}
+function clicaE(n){
+  const i=exc.indexOf(n);
+  if(i>-1){exc.splice(i,1);custom=null;return desenhar()}
+  if(exc.length>=EX)return desenhar("Você só pode excluir 7 dezenas. Reative uma para trocar.");
+  exc.push(n);custom=null;desenhar();
+}
+function clicaR(n){
+  const i=marc.indexOf(n);
+  if(i>-1)marc.splice(i,1);else{if(marc.length>=SZ)return;marc.push(n)}
+  marc.sort(asc);desenhar();
+}
+$("se").onclick=()=>{exc=emb().slice(0,EX).sort(asc);custom=null;desenhar()};
+$("le").onclick=()=>{exc=[];custom=null;desenhar()};
+$("lr").onclick=()=>{marc=[];desenhar()};
+$("sr").onclick=()=>{marc=emb().slice(0,SZ).sort(asc);desenhar()};
+
+/* desenho */
+function desenhar(msg){
+  for(let n=1;n<=T;n++){
+    $("ce"+n).className=exc.includes(n)?"ex":"on";
+    $("cr"+n).className=marc.includes(n)?"sel":"";
+  }
+  $("ex-ctr").textContent="Inclusas: "+(T-exc.length)+" de 24 · Excluídas: "+exc.length+"/7";
+  $("ctr").textContent="Marcadas: "+marc.length+" de 7";
+  const av=$("av");
+  if(msg){av.className="av er";av.textContent=msg}
+  else if(custom){av.className="av";av.textContent="Usando "+custom.length+" jogos colados na aba Copia e cola."}
+  else if(exc.length<EX){av.className="av er";av.textContent="Exclua mais "+(EX-exc.length)+" dezena(s) para gerar os 100 jogos."}
+  else{av.className="av";av.textContent="Pronto: 24 dezenas, 100 jogos de 16 dezenas gerados."}
+
+  const js=custom||gerar(),res=marc.length===SZ?marc:[];
+  const lista=js.map(j=>pts(j,res)),wins=res.length?lista.filter(p=>p>=SZ).length:0,pz=num("pr7");
+  $("tit").textContent=js.length?js.length+" jogos de 16 dezenas":"Jogos de 16 dezenas";
+  $("st").textContent=js.length?(custom?"Jogos colados por você.":"Jogos gerados automaticamente."):"Exclua exatamente 7 dezenas para ver os jogos aqui.";
+  let h="";
+  js.forEach((j,f)=>{
+    const win=res.length&&lista[f]>=SZ;
+    h+="<div class='g"+(win?" win":"")+"'><div class='gh'><span class='gi'>JOGO "+pad(f+1)+"</span>"+
+      (win?"<span class='pz'>★ 7 PONTOS · "+R$(pz)+"</span>":res.length?"<span class='pt'>"+lista[f]+"/7</span>":"")+"</div><div class='gn'>"+
+      j.map(n=>"<span class='n"+(res.length?(res.includes(n)?" h":" m"):"")+"'>"+pad(n)+"</span>").join("")+"</div></div>";
+  });
+  $("lj").innerHTML=h;
+  $("q7").textContent=pad(wins);$("tb7").classList.toggle("on",wins>0);
+  $("rs").textContent=!js.length?"Gere ou cole os jogos para conferir.":!res.length?"Faltam "+(SZ-marc.length)+" dezena(s) do resultado para conferir.":wins>0?"🎉 "+wins+" jogo(s) com 7 pontos!":"Nenhum jogo com 7 pontos. Melhor jogo: "+Math.max.apply(null,lista)+" pontos.";
+  $("tx").value=js.map((j,i)=>"Jogo "+pad(i+1)+": "+j.map(pad).join(" ")).join("\n");
+  financeiro(wins,js.length);
+  salvar();
+}
+
+/* financeiro */
+let ult={inv:0,ganho:0,w:0,ok:false};
+function financeiro(wins,n){
+  const inv=num("va")*n,pz=num("pr7"),ganho=wins*pz,luc=ganho-inv;
+  $("ci").textContent=R$(inv);$("cg").textContent=R$(ganho);$("cl2").textContent=(luc<0?"-":"")+R$(Math.abs(luc));
+  $("cl").className="ct"+(luc<0?" ng":"");
+  $("tp").innerHTML="<tr><td>7 pontos</td><td class='n2'>"+wins+"</td><td class='n2'>"+R$(pz)+"</td><td class='n2'>"+R$(ganho)+"</td></tr>";
+  ult={inv:inv,ganho:ganho,w:wins,ok:n>0&&marc.length===SZ};
+  let ti=0,tg=0,r="";
+  hist.forEach((e,i)=>{ti+=e.i;tg+=e.g;r+="<tr><td>"+(i+1)+"</td><td>"+e.w+"</td><td class='n2'>"+R$(e.i)+"</td><td class='n2'>"+R$(e.g)+"</td><td class='n2'>"+R$(e.g-e.i)+"</td></tr>"});
+  $("th").innerHTML=r;
+  $("ti").textContent=R$(ti);$("tg").textContent=R$(tg);$("ts2").textContent=(tg-ti<0?"-":"")+R$(Math.abs(tg-ti));
+  $("ts").className="ct"+(tg-ti<0?" ng":"");
+}
+$("rg").onclick=()=>{
+  if(!ult.ok){$("ah").textContent="Para registrar, tenha os jogos prontos e marque as 7 dezenas do resultado.";return}
+  hist.push({i:ult.inv,g:ult.ganho,w:ult.w});$("ah").textContent="Concurso "+hist.length+" registrado.";desenhar();
+};
+$("ru").onclick=()=>{hist.pop();desenhar()};
+$("rl").onclick=()=>{hist=[];desenhar()};
+["va","pr7"].forEach(i=>$(i).addEventListener("input",()=>desenhar()));
+
+/* copia e cola */
+const ext=t=>{const s=[];(t.match(/\d{1,2}/g)||[]).forEach(x=>{x=+x;if(x>=1&&x<=T&&!s.includes(x))s.push(x)});return s};
+function av2(id,ok,t){const e=$(id);e.hidden=false;e.className="av"+(ok?"":" er");e.textContent=t}
+$("aj").onclick=()=>{
+  const jg=[];let ign=0;
+  $("tj").value.split(/\r?\n/).forEach(l=>{
+    l=l.replace(/^\s*jogo\s*\d+\s*[:\-.)]?/i,"");
+    if(!l.trim())return;
+    const ns=ext(l);
+    if(ns.length===GS)jg.push(ns.sort(asc));else ign++;
+  });
+  if(!jg.length)return av2("avj",false,"Não encontrei nenhum jogo válido. Cada linha precisa ter 16 dezenas diferentes de 01 a 31.");
+  custom=jg;desenhar();
+  av2("avj",true,jg.length+" jogo(s) aplicado(s) e vinculados ao conferidor"+(ign?" ("+ign+" linha(s) ignorada(s))":"")+".");
+};
+$("vg").onclick=()=>{custom=null;desenhar();av2("avj",true,"Voltou para os jogos gerados pela exclusão.")};
+$("ar").onclick=()=>{
+  const ns=ext($("tr").value);
+  if(ns.length<SZ)return av2("avr",false,"Encontrei "+ns.length+" dezena(s) válida(s). São necessárias 7, de 1 a 31.");
+  marc=ns.slice(0,SZ).sort(asc);desenhar();av2("avr",true,"Resultado aplicado: "+marc.map(pad).join(" "));
+};
+function cop(t,m){
+  const fb=()=>{const ta=document.createElement("textarea");ta.value=t;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();
+    try{document.execCommand("copy");$("acmsg").textContent=m}catch(e){$("acmsg").textContent="Não consegui copiar. Selecione o texto e copie manualmente."}ta.remove()};
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(()=>{$("acmsg").textContent=m},fb);else fb();
+}
+$("c1").onclick=()=>cop($("tx").value,"Jogos copiados.");
+$("c2").onclick=()=>cop($("tx").value.split("\n").map(x=>x.replace(/^Jogo \d+: /,"").split(" ").join(",")).join("\n"),"Jogos copiados separados por vírgula.");
+
+/* abas */
+const abas=document.querySelectorAll("#ab button");
+abas.forEach(b=>b.addEventListener("click",()=>abas.forEach(o=>{o.setAttribute("aria-selected",String(o===b));$(o.dataset.t).hidden=o!==b})));
+
+/* memória */
+function salvar(){try{localStorage.setItem(K,JSON.stringify({exc,marc,custom,hist,f:{va:$("va").value,pr7:$("pr7").value}}))}catch(e){}}
+try{
+  const d=JSON.parse(localStorage.getItem(K)||"null");
+  if(d){
+    exc=d.exc||[];marc=d.marc||[];custom=d.custom||null;hist=d.hist||[];
+    if(d.f){if(d.f.va!==undefined)$("va").value=d.f.va;if(d.f.pr7!==undefined)$("pr7").value=d.f.pr7}
+  }
+}catch(e){}
+desenhar();
+})();
+</script>
+</body>
+</html>
